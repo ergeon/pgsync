@@ -487,12 +487,7 @@ Options:}
         strategies = {
           "unique_email" => "'email' || #{table}.id || '@example.org'",
           "untouched" => escape_identifier(column),
-          "unique_phone" => "
-            CASE
-              WHEN #{table}.#{column} = '(707) 608-9685' THEN #{table}.#{column}
-              ELSE '+' || (#{table}.id + 15336000000)::text
-            END
-          ",
+          "unique_phone" => "'+' || (#{table}.id + 15336000000)::text",
           "random_int" => "(RAND() * 10)::int",
           "random_date" => "'1970-01-01'",
           "random_time" => "NOW()",
